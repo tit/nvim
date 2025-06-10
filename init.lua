@@ -51,18 +51,22 @@ vim.opt.shiftwidth = 2
 vim.keymap.set("n", "<leader>e", ":Explore<CR>")
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "lua", "python", "javascript" },  -- типы файлов
+  pattern = { 
+    "lua", 
+    "python", 
+    "javascript" 
+  },
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
     if ft == "lua" then
       vim.opt_local.foldmethod = "marker"
-      vim.opt_local.foldmarker = "-- region,-- endregion"  -- для Lua
+      vim.opt_local.foldmarker = "-- region,-- endregion"  
     elseif ft == ("python" or "ruby") then
       vim.opt_local.foldmethod = "marker"
-      vim.opt_local.foldmarker = "# region,# endregion"  -- для Python
+      vim.opt_local.foldmarker = "# region,# endregion" 
     elseif ft == "javascript" then
       vim.opt_local.foldmethod = "marker"
-      vim.opt_local.foldmarker = "// region,// endregion"  -- для Markdown
+      vim.opt_local.foldmarker = "// region,// endregion"  
     end
   end
 })
