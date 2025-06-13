@@ -7,11 +7,11 @@ return {
     },
 
     config = function()
-      require("bufferline").setup({})
+      require("bufferline").setup()
 
-      vim.keymap.set("n", "<leader>w", ":bdelete<CR>", {desc = "Close current [w]indow"})
-      vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
-      vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
+      vim.keymap.set("n", "<leader>w", ":bdelete<CR>", {desc = "Close current window"})
+      vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", {desc = "Next tab"})
+      vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", {desc = "Prev tab"})
     end
   }
 }
