@@ -9,5 +9,11 @@ return {
   
   lazy = false, 
   
-  opts = {},
+  opts = {
+    right = true
+  },
+
+  config = function() 
+    vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+  end
 }
