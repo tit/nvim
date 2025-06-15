@@ -13,3 +13,9 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
 -- endregion
+
+-- region scrolloff
+
+vim.opt.scrolloff = 5
+
+-- endregion
