@@ -1,7 +1,4 @@
-require("core.folding")
 require("core.globals")
-require("core.key_mapping")
-require("core.options")
 
 -- region lazy
 
@@ -10,27 +7,27 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
 
-	local out = vim.fn.system({ 
-    "git", 
-    "clone", 
-    "--filter=blob:none", 
-    "--branch=stable", 
-    lazyrepo, 
-    lazypath 
+	local out = vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--branch=stable",
+    lazyrepo,
+    lazypath,
   })
 
   if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
-			{ 
-        "Failed to clone lazy.nvim:\n", 
-        "ErrorMsg" 
+			{
+        "Failed to clone lazy.nvim:\n",
+        "ErrorMsg"
       },
-			{ 
-        out, 
-        "WarningMsg" 
+			{
+        out,
+        "WarningMsg"
       },
-			{ 
-        "\nPress any key to exit..." 
+			{
+        "\nPress any key to exit..."
       },
 		}, true, {})
 		vim.fn.getchar()
@@ -50,3 +47,23 @@ require("lazy").setup({
 
 -- endregion
 
+require("core.folding")
+require("core.key_mapping")
+require("core.options")
+
+vim.diagnostic.config({
+        signs = {
+                text = {
+                        [vim.diagnostic.severity.ERROR] = " ",
+                        [vim.diagnostic.severity.WARN] = " ",
+                        [vim.diagnostic.severity.INFO] = "󰋼 ",
+                        [vim.diagnostic.severity.HINT] = "󰌵 ",
+                },
+                numhl = {
+                        [vim.diagnostic.severity.ERROR] = "",
+                        [vim.diagnostic.severity.WARN] = "",
+                        [vim.diagnostic.severity.HINT] = "",
+                        [vim.diagnostic.severity.INFO] = "",
+                },
+        },
+})
